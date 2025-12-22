@@ -1,16 +1,16 @@
 "use client";
 
-import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Toggle from "@/components/ui/Toggle";
 import ProjectCard from "@/components/ui/ProjectCard";
 import { projects } from "@/lib/constants";
 import { fadeUp, workGridTransform, workCardTransform } from "@/lib/animations";
+import { useMood } from "@/contexts/MoodContext";
 
 export default function Work() {
-  const [activeMode, setActiveMode] = useState<"code" | "lens">("code");
+  const { mood } = useMood();
 
-  const filteredProjects = projects.filter((p) => p.category === activeMode);
+  const filteredProjects = projects.filter((p) => p.category === mood);
 
   return (
     <section id="work" className="py-32">
@@ -26,13 +26,13 @@ export default function Work() {
           <h2 className="font-display text-h1 font-bold mb-8">SELECTED WORKS</h2>
 
           {/* Toggle */}
-          <Toggle activeMode={activeMode} onToggle={setActiveMode} />
+          <Toggle />
         </motion.div>
 
         {/* Projects Grid */}
         <AnimatePresence mode="wait">
           <motion.div
-            key={activeMode}
+            key={mood}
             className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
             variants={workGridTransform}
             initial="hidden"
@@ -41,7 +41,7 @@ export default function Work() {
           >
             {filteredProjects.map((project, index) => (
               <motion.div key={project.id} variants={workCardTransform}>
-                <ProjectCard project={project} index={index} mode={activeMode} />
+                <ProjectCard project={project} index={index} mode={mood} />
               </motion.div>
             ))}
           </motion.div>
@@ -68,7 +68,7 @@ export default function Work() {
       {/* Mode-specific background texture */}
       <div
         className={`fixed inset-0 pointer-events-none transition-opacity duration-500 -z-10 ${
-          activeMode === "code" ? "opacity-100" : "opacity-0"
+          mood === "code" ? "opacity-100" : "opacity-0"
         }`}
       >
         {/* Subtle grid pattern for code mode */}

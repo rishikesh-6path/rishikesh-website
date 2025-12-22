@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { MoodProvider } from "@/contexts/MoodContext";
+import { MoodApplicator } from "@/components/providers/MoodApplicator";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -73,8 +75,12 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${playfair.variable}`}
     >
       <body className="bg-background text-foreground font-body antialiased">
-        <div className="grain-overlay" />
-        {children}
+        <MoodProvider>
+          <MoodApplicator>
+            <div className="grain-overlay" />
+            {children}
+          </MoodApplicator>
+        </MoodProvider>
       </body>
     </html>
   );
