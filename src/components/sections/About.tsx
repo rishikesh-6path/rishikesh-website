@@ -2,13 +2,13 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { fadeUp, slideLeft, slideRight, staggerContainer } from "@/lib/animations";
+import { fadeUp, staggerContainer } from "@/lib/animations";
 import { aboutData } from "@/lib/constants";
 
 export default function About() {
   return (
-    <section id="about" className="pt-48 md:pt-56 pb-24 px-6 lg:px-8 bg-background relative z-10">
-      <div className="max-w-7xl mx-auto">
+    <section id="about" className="pt-48 md:pt-56 pb-24 bg-background relative z-10">
+      <div style={{ maxWidth: '1280px', margin: '0 auto', paddingLeft: '48px', paddingRight: '48px' }}>
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center"
           variants={staggerContainer}
@@ -17,7 +17,12 @@ export default function About() {
           viewport={{ once: true, amount: 0.2 }}
         >
           {/* Pull Quote - Left Side */}
-          <motion.div variants={slideLeft}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
             {/* Section label */}
             <span className="inline-block text-xs font-medium tracking-[0.2em] uppercase text-foreground-muted mb-6">
               The Perspective
@@ -60,7 +65,12 @@ export default function About() {
           </motion.div>
 
           {/* Image - Right Side */}
-          <motion.div variants={slideRight}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+          >
             <div className="relative">
               <div className="relative aspect-[4/5] max-w-lg mx-auto rounded-2xl overflow-hidden transform rotate-1 hover:rotate-0 transition-transform duration-500">
                 <Image

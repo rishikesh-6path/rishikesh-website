@@ -32,7 +32,7 @@ export default function Hero() {
 
       {/* Name */}
       <motion.div
-        className="relative z-10 text-center"
+        className="relative z-10 text-center px-6"
         variants={fadeUp}
         initial="hidden"
         animate="visible"

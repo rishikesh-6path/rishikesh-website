@@ -13,8 +13,8 @@ export default function Work() {
   const filteredProjects = projects.filter((p) => p.category === activeMode);
 
   return (
-    <section id="work" className="py-32 px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section id="work" className="py-32">
+      <div style={{ maxWidth: '1280px', margin: '0 auto', paddingLeft: '48px', paddingRight: '48px' }}>
         {/* Section Header */}
         <motion.div
           className="text-center mb-16"
