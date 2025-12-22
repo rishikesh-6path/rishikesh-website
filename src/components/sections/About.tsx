@@ -29,6 +29,14 @@ export default function About() {
 
   return (
     <section id="about" className="pt-48 md:pt-56 pb-24 bg-background relative z-10">
+      {/* Top gradient - matches Hero's 90% black ending, fades to bg-background */}
+      <div
+        className="absolute top-0 left-0 right-0 h-64 pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 40%, transparent 100%)",
+        }}
+      />
+
       <div style={{ maxWidth: '1280px', margin: '0 auto', paddingLeft: '48px', paddingRight: '48px' }}>
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center"
