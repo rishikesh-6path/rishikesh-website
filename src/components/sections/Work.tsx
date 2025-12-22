@@ -64,23 +64,6 @@ export default function Work() {
           </a>
         </motion.div>
       </div>
-
-      {/* Mode-specific background texture */}
-      <div
-        className={`fixed inset-0 pointer-events-none transition-opacity duration-500 -z-10 ${
-          mood === "code" ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        {/* Subtle grid pattern for code mode */}
-        <div
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage: `linear-gradient(rgba(232, 93, 4, 0.3) 1px, transparent 1px),
-                             linear-gradient(90deg, rgba(232, 93, 4, 0.3) 1px, transparent 1px)`,
-            backgroundSize: "50px 50px",
-          }}
-        />
-      </div>
     </section>
   );
 }

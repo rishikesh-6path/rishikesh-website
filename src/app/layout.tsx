@@ -3,6 +3,7 @@ import { Space_Grotesk, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { MoodProvider } from "@/contexts/MoodContext";
 import { MoodApplicator } from "@/components/providers/MoodApplicator";
+import BackgroundTexture from "@/components/ui/BackgroundTexture";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -77,6 +78,7 @@ export default function RootLayout({
       <body className="bg-background text-foreground font-body antialiased">
         <MoodProvider>
           <MoodApplicator>
+            <BackgroundTexture />
             <div className="grain-overlay" />
             {children}
           </MoodApplicator>

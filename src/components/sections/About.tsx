@@ -4,8 +4,29 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 import { aboutData } from "@/lib/constants";
+import { useMood } from "@/contexts/MoodContext";
 
 export default function About() {
+  const { mood } = useMood();
+
+  // Mode-specific classes
+  const sectionLabelClasses = mood === "code"
+    ? "font-medium tracking-[0.2em]"
+    : "font-serif tracking-[0.15em] italic";
+
+  const quoteClasses = mood === "code"
+    ? "font-serif text-h2 italic"
+    : "font-serif text-h2 italic opacity-90";
+
+  const statPillClasses = mood === "code"
+    ? "rounded-full border border-border"
+    : "rounded-full border-0 bg-background-secondary/50";
+
+  // Decorative element: square for CODE, circle for LENS
+  const decorativeClasses = mood === "code"
+    ? "w-32 h-32 rounded-2xl border border-accent/20"
+    : "w-36 h-36 rounded-full border-2 border-accent/15";
+
   return (
     <section id="about" className="pt-48 md:pt-56 pb-24 bg-background relative z-10">
       <div style={{ maxWidth: '1280px', margin: '0 auto', paddingLeft: '48px', paddingRight: '48px' }}>
@@ -21,15 +42,15 @@ export default function About() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            transition={{ duration: mood === "code" ? 0.7 : 1, ease: "easeOut" }}
           >
             {/* Section label */}
-            <span className="inline-block text-xs font-medium tracking-[0.2em] uppercase text-foreground-muted mb-6">
+            <span className={`inline-block text-xs uppercase text-foreground-muted mb-6 transition-all duration-500 ${sectionLabelClasses}`}>
               The Perspective
             </span>
 
             {/* Pull Quote */}
-            <blockquote className="font-serif text-h2 italic text-foreground leading-tight">
+            <blockquote className={`text-foreground leading-tight transition-all duration-500 ${quoteClasses}`}>
               &ldquo;{aboutData.pullQuote}&rdquo;
             </blockquote>
 
@@ -47,7 +68,7 @@ export default function About() {
                 <motion.div
                   key={stat.label}
                   variants={fadeUp}
-                  className="px-4 py-2 rounded-full border border-border text-sm"
+                  className={`px-4 py-2 text-sm transition-all duration-500 ${statPillClasses}`}
                 >
                   <span className="text-foreground-muted">{stat.label}: </span>
                   <span className="text-foreground font-medium">{stat.value}</span>
@@ -69,10 +90,14 @@ export default function About() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+            transition={{ duration: mood === "code" ? 0.7 : 1, ease: "easeOut", delay: 0.1 }}
           >
             <div className="relative">
-              <div className="relative aspect-[4/5] max-w-lg mx-auto rounded-2xl overflow-hidden transform rotate-1 hover:rotate-0 transition-transform duration-500">
+              <div className={`relative aspect-[4/5] max-w-lg mx-auto overflow-hidden transform transition-all duration-500 ${
+                mood === "code"
+                  ? "rounded-2xl rotate-1 hover:rotate-0"
+                  : "rounded-3xl rotate-0 hover:scale-[1.02]"
+              }`}>
                 <Image
                   src="/images/about.jpg"
                   alt="Rishikesh working"
@@ -80,8 +105,8 @@ export default function About() {
                   className="object-cover"
                 />
               </div>
-              {/* Decorative element */}
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 border border-accent/20 rounded-2xl -z-10" />
+              {/* Decorative element - square for CODE, circle for LENS */}
+              <div className={`absolute -bottom-4 -right-4 -z-10 transition-all duration-500 ${decorativeClasses}`} />
             </div>
           </motion.div>
         </motion.div>

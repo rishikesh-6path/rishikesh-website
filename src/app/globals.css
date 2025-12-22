@@ -171,11 +171,13 @@ body {
 
 ::-webkit-scrollbar-track {
   background: var(--bg-secondary);
+  transition: background-color var(--transition-base) ease;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--border-hover);
   border-radius: 4px;
+  transition: background-color var(--transition-base) ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -195,6 +197,16 @@ body {
 
 .accent-glow {
   box-shadow: 0 0 30px var(--accent-glow);
+  transition: box-shadow var(--transition-base) ease;
+}
+
+/* Mood transition utility - applies smooth transitions to color properties */
+.mood-transition {
+  transition:
+    background-color var(--transition-base) ease,
+    border-color var(--transition-base) ease,
+    color var(--transition-base) ease,
+    box-shadow var(--transition-base) ease;
 }
 
 .grain-overlay {

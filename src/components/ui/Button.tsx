@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
+import { useMood } from "@/contexts/MoodContext";
 
 interface ButtonProps {
   children: ReactNode;
@@ -20,12 +21,17 @@ export default function Button({
   onClick,
   className = "",
 }: ButtonProps) {
-  const baseStyles =
-    "inline-flex items-center justify-center font-display font-medium transition-all duration-300 rounded-full";
+  const { mood } = useMood();
+
+  // Mode-specific styles
+  const borderRadius = mood === "code" ? "rounded-full" : "rounded-xl";
+  const transitionDuration = mood === "code" ? "duration-300" : "duration-500";
+
+  const baseStyles = `inline-flex items-center justify-center font-display font-medium transition-all ${transitionDuration} ${borderRadius}`;
 
   const variants = {
     primary:
-      "bg-accent text-white hover:bg-accent-hover shadow-lg hover:shadow-[0_0_30px_rgba(232,93,4,0.25)]",
+      "bg-accent text-white hover:bg-accent-hover shadow-lg hover:shadow-[0_0_30px_var(--accent-glow)]",
     outline:
       "border border-border text-foreground-secondary hover:border-accent hover:text-accent",
     ghost: "text-foreground-secondary hover:text-accent",
@@ -39,12 +45,19 @@ export default function Button({
 
   const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
 
+  // Mode-specific animation
+  const hoverScale = mood === "code" ? 1.03 : 1.02;
+  const hoverTransition = {
+    duration: mood === "code" ? 0.2 : 0.4,
+    ease: "easeOut" as const,
+  };
+
   if (href) {
     return (
       <motion.a
         href={href}
         className={classes}
-        whileHover={{ scale: 1.02 }}
+        whileHover={{ scale: hoverScale, transition: hoverTransition }}
         whileTap={{ scale: 0.98 }}
       >
         {children}
@@ -56,7 +69,7 @@ export default function Button({
     <motion.button
       onClick={onClick}
       className={classes}
-      whileHover={{ scale: 1.02 }}
+      whileHover={{ scale: hoverScale, transition: hoverTransition }}
       whileTap={{ scale: 0.98 }}
     >
       {children}

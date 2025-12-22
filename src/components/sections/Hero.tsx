@@ -5,8 +5,20 @@ import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import Particles from "@/components/ui/Particles";
 import { heroImage, heroSubtext, fadeUp } from "@/lib/animations";
+import { useMood } from "@/contexts/MoodContext";
 
 export default function Hero() {
+  const { mood } = useMood();
+
+  // Mode-specific typography classes
+  const nameClasses = mood === "code"
+    ? "font-display font-bold tracking-tighter"
+    : "font-serif font-normal tracking-normal italic";
+
+  const taglineClasses = mood === "code"
+    ? "font-body tracking-wide"
+    : "font-serif tracking-wider italic";
+
   return (
     <section className="relative h-screen flex flex-col items-center justify-end overflow-hidden pb-16 md:pb-20">
       {/* Background Image - Full bleed */}
@@ -24,7 +36,7 @@ export default function Hero() {
           priority
         />
         {/* Subtle gradient at bottom for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent transition-colors duration-500" />
       </motion.div>
 
       {/* Ambient particles */}
@@ -37,14 +49,14 @@ export default function Hero() {
         initial="hidden"
         animate="visible"
       >
-        <h1 className="font-display font-bold tracking-tighter leading-[0.9]">
+        <h1 className={`leading-[0.9] transition-all duration-500 ${nameClasses}`}>
           <span className="block text-[clamp(2rem,9vw,7rem)]">RISHIKESH</span>
           <span className="block text-[clamp(2rem,9vw,7rem)]">SWAMINATHAN</span>
         </h1>
 
         {/* Tagline */}
         <motion.p
-          className="mt-4 text-foreground-secondary font-body text-lg md:text-xl tracking-wide"
+          className={`mt-4 text-foreground-secondary text-lg md:text-xl transition-all duration-500 ${taglineClasses}`}
           variants={heroSubtext}
           initial="hidden"
           animate="visible"
