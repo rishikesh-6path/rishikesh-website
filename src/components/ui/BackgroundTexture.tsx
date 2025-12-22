@@ -23,10 +23,10 @@ export default function BackgroundTexture() {
         />
       </div>
 
-      {/* LENS Mode: Film grain + warm vignette */}
+      {/* ART Mode: Film grain + warm vignette */}
       <div
         className={`absolute inset-0 transition-opacity duration-500 ${
-          mood === "lens" ? "opacity-100" : "opacity-0"
+          mood === "art" ? "opacity-100" : "opacity-0"
         }`}
       >
         {/* Enhanced film grain */}

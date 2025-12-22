@@ -12,7 +12,7 @@ const CODE_TIMING = {
   ease: [0.25, 0.46, 0.45, 0.94] as const, // Sharp easeOut
 };
 
-const LENS_TIMING = {
+const ART_TIMING = {
   duration: 0.6,
   durationSlow: 0.9,
   stagger: 0.1,
@@ -23,7 +23,7 @@ export function useMoodAnimations() {
   const { mood } = useMood();
 
   return useMemo(() => {
-    const timing = mood === "code" ? CODE_TIMING : LENS_TIMING;
+    const timing = mood === "code" ? CODE_TIMING : ART_TIMING;
 
     // Fade up animation
     const fadeUp: Variants = {
@@ -145,7 +145,7 @@ export function useMoodTransition() {
   const { mood } = useMood();
 
   return useMemo(() => {
-    const timing = mood === "code" ? CODE_TIMING : LENS_TIMING;
+    const timing = mood === "code" ? CODE_TIMING : ART_TIMING;
 
     return {
       duration: timing.duration,

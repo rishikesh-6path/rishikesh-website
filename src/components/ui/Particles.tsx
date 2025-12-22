@@ -44,7 +44,7 @@ export default function Particles() {
         opacity: [0.2, 0.5, 0.2],
       };
     } else {
-      // LENS: Softer, bokeh-like floating
+      // ART: Softer, bokeh-like floating
       return {
         y: [0, -20, 0],
         x: [0, 5, -5, 0],

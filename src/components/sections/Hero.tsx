@@ -4,11 +4,12 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import Particles from "@/components/ui/Particles";
+import MoodPanel from "@/components/ui/MoodPanel";
 import { heroImage, heroSubtext, fadeUp } from "@/lib/animations";
 import { useMood } from "@/contexts/MoodContext";
 
 export default function Hero() {
-  const { mood } = useMood();
+  const { mood, setMood } = useMood();
 
   // Mode-specific typography classes
   const nameClasses = mood === "code"
@@ -41,6 +42,56 @@ export default function Hero() {
 
       {/* Ambient particles */}
       <Particles />
+
+      {/* Mode Selector Panels - Desktop */}
+      <div className="hidden md:flex absolute inset-0 z-10 pointer-events-none">
+        {/* CODE Panel - Left */}
+        <motion.div
+          className="absolute left-8 lg:left-16 top-1/2 -translate-y-1/2 pointer-events-auto"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
+        >
+          <MoodPanel
+            mode="code"
+            isActive={mood === "code"}
+            onClick={() => setMood("code")}
+          />
+        </motion.div>
+
+        {/* ART Panel - Right */}
+        <motion.div
+          className="absolute right-8 lg:right-16 top-1/2 -translate-y-1/2 pointer-events-auto"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
+        >
+          <MoodPanel
+            mode="art"
+            isActive={mood === "art"}
+            onClick={() => setMood("art")}
+          />
+        </motion.div>
+      </div>
+
+      {/* Mode Selector Panels - Mobile (horizontal strip) */}
+      <motion.div
+        className="md:hidden absolute top-20 left-0 right-0 z-10 flex justify-center gap-4 px-4"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
+      >
+        <MoodPanel
+          mode="code"
+          isActive={mood === "code"}
+          onClick={() => setMood("code")}
+        />
+        <MoodPanel
+          mode="art"
+          isActive={mood === "art"}
+          onClick={() => setMood("art")}
+        />
+      </motion.div>
 
       {/* Name */}
       <motion.div

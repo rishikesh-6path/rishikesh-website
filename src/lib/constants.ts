@@ -29,7 +29,7 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  category: "code" | "lens";
+  category: "code" | "art";
   tags: string[];
   image: string;
   link?: string;
@@ -80,53 +80,53 @@ export const projects: Project[] = [
     image: "/images/projects/ml-studio.jpg",
   },
 
-  // LENS PROJECTS
+  // ART PROJECTS
   {
-    id: "lens-1",
+    id: "art-1",
     title: "Echoes of Chennai",
     description: "A short film exploring the hidden rhythms of the city.",
-    category: "lens",
+    category: "art",
     tags: ["Short Film", "Documentary"],
     image: "/images/projects/echoes.jpg",
     featured: true,
   },
   {
-    id: "lens-2",
+    id: "art-2",
     title: "Neon Dreams",
     description: "Music video for indie artist featuring cyberpunk aesthetics.",
-    category: "lens",
+    category: "art",
     tags: ["Music Video", "Cinematography"],
     image: "/images/projects/neon.jpg",
   },
   {
-    id: "lens-3",
+    id: "art-3",
     title: "VIINKWEAR Campaign",
     description: "Indo-western fashion brand campaign shoot.",
-    category: "lens",
+    category: "art",
     tags: ["Fashion", "Commercial"],
     image: "/images/projects/viinkwear.jpg",
   },
   {
-    id: "lens-4",
+    id: "art-4",
     title: "Portrait Series: Creators",
     description: "Editorial portraits of Chennai's creative community.",
-    category: "lens",
+    category: "art",
     tags: ["Portrait", "Editorial"],
     image: "/images/projects/creators.jpg",
   },
   {
-    id: "lens-5",
+    id: "art-5",
     title: "Midnight Sessions",
     description: "Behind-the-scenes documentary of a music production.",
-    category: "lens",
+    category: "art",
     tags: ["BTS", "Documentary"],
     image: "/images/projects/midnight.jpg",
   },
   {
-    id: "lens-6",
+    id: "art-6",
     title: "Urban Geometry",
     description: "Architectural photography series exploring Chennai's structures.",
-    category: "lens",
+    category: "art",
     tags: ["Architecture", "Photography"],
     image: "/images/projects/urban.jpg",
   },
@@ -139,7 +139,7 @@ export const projects: Project[] = [
 export const aboutData = {
   pullQuote: "Defining the space where code meets cinema.",
   shortIntro:
-    "I'm a creator who refuses to choose between logic and art. By day, I architect ML systems and build SaaS products. By night, I craft visual narratives through lens and light.",
+    "I'm a creator who refuses to choose between logic and art. By day, I architect ML systems and build SaaS products. By night, I craft visual narratives through art and light.",
   longNarrative:
     "My journey began with curiosity — taking apart cameras and computers with equal fascination. Today, that curiosity drives everything I create. Whether I'm training neural networks or directing a short film, the goal remains the same: translate abstract ideas into tangible experiences that move people. Based in Chennai, I work at the intersection of technology and storytelling, believing that the best creations emerge when we stop seeing boundaries between disciplines.",
   stats: [

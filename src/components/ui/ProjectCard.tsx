@@ -9,7 +9,7 @@ import { Project } from "@/lib/constants";
 interface ProjectCardProps {
   project: Project;
   index: number;
-  mode: "code" | "lens";
+  mode: "code" | "art";
 }
 
 export default function ProjectCard({ project, index, mode }: ProjectCardProps) {

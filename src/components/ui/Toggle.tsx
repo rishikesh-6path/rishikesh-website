@@ -21,17 +21,17 @@ export default function Toggle() {
         <span className="font-display font-semibold text-sm tracking-wider">CODE</span>
       </button>
 
-      {/* LENS button */}
+      {/* ART button */}
       <button
-        onClick={() => setMood("lens")}
+        onClick={() => setMood("art")}
         className={`relative flex items-center gap-2 px-5 py-2 rounded-full transition-all duration-300 ${
-          mood === "lens"
+          mood === "art"
             ? "bg-accent text-white shadow-lg shadow-accent/20"
             : "text-foreground-muted hover:text-foreground-secondary"
         }`}
       >
         <Aperture size={16} />
-        <span className="font-display font-semibold text-sm tracking-wider">LENS</span>
+        <span className="font-display font-semibold text-sm tracking-wider">ART</span>
       </button>
     </div>
   );

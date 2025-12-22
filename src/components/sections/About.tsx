@@ -22,7 +22,7 @@ export default function About() {
     ? "rounded-full border border-border"
     : "rounded-full border-0 bg-background-secondary/50";
 
-  // Decorative element: square for CODE, circle for LENS
+  // Decorative element: square for CODE, circle for ART
   const decorativeClasses = mood === "code"
     ? "w-32 h-32 rounded-2xl border border-accent/20"
     : "w-36 h-36 rounded-full border-2 border-accent/15";
@@ -105,7 +105,7 @@ export default function About() {
                   className="object-cover"
                 />
               </div>
-              {/* Decorative element - square for CODE, circle for LENS */}
+              {/* Decorative element - square for CODE, circle for ART */}
               <div className={`absolute -bottom-4 -right-4 -z-10 transition-all duration-500 ${decorativeClasses}`} />
             </div>
           </motion.div>

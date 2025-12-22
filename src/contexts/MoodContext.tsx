@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
-type Mood = "code" | "lens";
+type Mood = "code" | "art";
 
 interface MoodContextType {
   mood: Mood;
@@ -21,7 +21,7 @@ export function MoodProvider({ children }: { children: ReactNode }) {
   // Load mood from localStorage on mount
   useEffect(() => {
     const savedMood = localStorage.getItem(STORAGE_KEY) as Mood | null;
-    if (savedMood && (savedMood === "code" || savedMood === "lens")) {
+    if (savedMood && (savedMood === "code" || savedMood === "art")) {
       setMoodState(savedMood);
     }
     setIsHydrated(true);
@@ -39,7 +39,7 @@ export function MoodProvider({ children }: { children: ReactNode }) {
   };
 
   const toggleMood = () => {
-    setMoodState((prev) => (prev === "code" ? "lens" : "code"));
+    setMoodState((prev) => (prev === "code" ? "art" : "code"));
   };
 
   return (
