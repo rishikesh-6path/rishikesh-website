@@ -37,25 +37,25 @@ export default function MoodPanel({ mode, isActive, onClick, side }: MoodPanelPr
         height={900}
         borderRadius={0}
         borderWidth={0.04}
-        brightness={50}
+        brightness={isActive ? 55 : 50}
         opacity={0.88}
-        blur={18}
+        blur={isActive ? 22 : 16}
         displace={0}
-        backgroundOpacity={0.02}
-        saturation={1.2}
+        backgroundOpacity={isActive ? 0.1 : 0.02}
+        saturation={0}
         distortionScale={-160}
         redOffset={0}
         greenOffset={12}
         blueOffset={24}
         className={`
           !w-full !h-full
-          ${!isActive ? "opacity-60" : ""}
+          ${!isActive ? "opacity-50" : ""}
         `}
         style={{
           width: "100%",
           height: "100%",
           borderRadius: borderRadiusStyle,
-          transition: "opacity 0.4s ease",
+          transition: "all 0.5s ease",
         }}
       >
         <div
