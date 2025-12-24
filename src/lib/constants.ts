@@ -153,6 +153,126 @@ export const aboutData = {
 // TESTIMONIALS
 // ============================================
 
+// ============================================
+// BLOG POSTS
+// ============================================
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  category: "code" | "art" | "thoughts";
+  date: string;
+  readTime: string;
+  image: string;
+  featured?: boolean;
+}
+
+export const blogPosts: BlogPost[] = [
+  {
+    id: "building-ml-pipelines",
+    title: "Building Production ML Pipelines",
+    excerpt: "Lessons learned from deploying machine learning models at scale, from data preprocessing to model serving.",
+    category: "code",
+    date: "2024-12-15",
+    readTime: "8 min read",
+    image: "/images/blog/ml-pipelines.jpg",
+    featured: true,
+  },
+  {
+    id: "cinematic-lighting",
+    title: "The Art of Cinematic Lighting",
+    excerpt: "How I approach lighting for narrative films and the techniques that create mood and atmosphere.",
+    category: "art",
+    date: "2024-12-01",
+    readTime: "6 min read",
+    image: "/images/blog/lighting.jpg",
+    featured: true,
+  },
+  {
+    id: "react-performance",
+    title: "React Performance Optimization Deep Dive",
+    excerpt: "Advanced techniques for optimizing React applications, from memo strategies to bundle splitting.",
+    category: "code",
+    date: "2024-11-20",
+    readTime: "10 min read",
+    image: "/images/blog/react-perf.jpg",
+  },
+  {
+    id: "creative-process",
+    title: "My Creative Process: From Idea to Execution",
+    excerpt: "A behind-the-scenes look at how I approach both technical and artistic projects.",
+    category: "thoughts",
+    date: "2024-11-10",
+    readTime: "5 min read",
+    image: "/images/blog/process.jpg",
+  },
+  {
+    id: "color-grading-guide",
+    title: "Color Grading for Beginners",
+    excerpt: "A comprehensive guide to color grading that transforms ordinary footage into cinematic visuals.",
+    category: "art",
+    date: "2024-10-25",
+    readTime: "7 min read",
+    image: "/images/blog/color-grading.jpg",
+  },
+  {
+    id: "nextjs-best-practices",
+    title: "Next.js 14 Best Practices",
+    excerpt: "Modern patterns and practices for building scalable Next.js applications.",
+    category: "code",
+    date: "2024-10-15",
+    readTime: "12 min read",
+    image: "/images/blog/nextjs.jpg",
+  },
+];
+
+// ============================================
+// VENTURES DATA
+// ============================================
+
+export interface Venture {
+  id: string;
+  name: string;
+  description: string;
+  role: string;
+  status: "active" | "building" | "exited";
+  link?: string;
+  image: string;
+}
+
+export const ventures: Venture[] = [
+  {
+    id: "venture-1",
+    name: "TechStartup AI",
+    description: "AI-powered analytics platform for e-commerce businesses.",
+    role: "Co-founder & CTO",
+    status: "active",
+    link: "https://example.com",
+    image: "/images/ventures/startup1.jpg",
+  },
+  {
+    id: "venture-2",
+    name: "Creative Studio",
+    description: "A boutique production house for brands and artists.",
+    role: "Founder",
+    status: "active",
+    image: "/images/ventures/studio.jpg",
+  },
+  {
+    id: "venture-3",
+    name: "DevTools Pro",
+    description: "Developer productivity tools and browser extensions.",
+    role: "Technical Advisor",
+    status: "building",
+    image: "/images/ventures/devtools.jpg",
+  },
+];
+
+// ============================================
+// TESTIMONIALS
+// ============================================
+
 export const testimonials = [
   {
     id: 1,
